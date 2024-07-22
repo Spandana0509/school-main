@@ -1,0 +1,22 @@
+{
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.schoolAdmin",
+      "description": "schoolAdmin"
+    }
+  ],
+  "attributes": [],
+  "role-templates": [
+    {
+      "name": "schoolAdmin",
+      "description": "Role for Administration of school",
+      "scope-references": [
+        "$XSAPPNAME.schoolAdmin"
+      ]
+    }
+  ],
+  "oauth2-configuration": {
+    "redirect-uris": ["https://*.cfapps.us10-001.hana.ondemand.com/**"]
+ }
+  
+}
