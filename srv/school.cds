@@ -1,10 +1,6 @@
 using { com.satinfotech.school as db } from '../db/schema';
 service school{
- entity School as projection on db.School{
-        @UI.Hidden: true
-        ID,
-        *
-    };
+ entity School as projection on db.School;
 
 }
 annotate school.School with @odata.draft.enabled;
@@ -12,7 +8,7 @@ annotate school.School with @(
     UI.LineItem: [
         {
             $Type : 'UI.DataField',
-            Label:'HospitalID',
+            Label:'School_name',
             Value : school_name
         },
         {

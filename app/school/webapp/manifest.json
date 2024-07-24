@@ -120,7 +120,7 @@
                       "visible": true,
                       "enabled": true,
                       "requiresSelection": false,
-                      "text": "REPLACE_WITH_BUTTON_TEXT"
+                      "text": "import data from excel list"
                     }
                   }
                 }
@@ -135,19 +135,24 @@
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "contextPath": "/School"
+              "contextPath": "/School",
+              "content": {
+                "header": {
+                  "actions": {
+                    
+                    "actionbuttonObject": {
+                      "press": "school.ext.actionbuttonObject.actionbuttonObject.importdata",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "import data from excel object"
+                    }
+                  }
+                }
+              }
             }
           }
         }
-      }
-    }
-  },
-  "sap.ui.viewExtensions": {
-    "sap.suite.ui.generic.template.ObjectPage.view.Details": {
-      "AfterHeaderFacet": {
-        "className": "sap.ui.core.mvc.View",
-        "viewName": "my.company.view.ObjectPageExt",
-        "type": "XML"
       }
     }
   },
