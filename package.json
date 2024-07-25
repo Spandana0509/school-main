@@ -30,35 +30,20 @@
     "watch-objectpage": "cds watch --open objectpage/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
+    "fiori": {
+      "lean_draft": true,
+      "bypass_draft": true
+    },
     "requires": {
       "db": {
-        "impl": "@cap-js/postgres",
-        "pool": {
-          "max": 20
-        }
-      },
-      "auth": {
-        "auth": {
-          "strategy": "mock"
-        },
-        "[production]": {
-          "strategy": "JWT"
-        }
-      },
-      "API_PRODUCT_SRV": {
-        "kind": "odata-v2",
-        "model": "srv/external/API_PRODUCT_SRV",
-        "csrf": true,
-        "csrfInBatch": true,
-        "[production]": {
-          "credentials": {
-            "destination": "S4HANA",
-            "path": "/sap/opu/odata/sap/API_PRODUCT_SRV"
-          }
+        "kind": "sqlite",
+        "credentials": {
+          "url": "db.sqlite"
         }
       }
     }
   },
+  
   "sapux": [
     "app/school",
     "app/project1",
