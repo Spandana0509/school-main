@@ -1,15 +1,15 @@
 sap.ui.require(
     [
         'sap/fe/test/JourneyRunner',
-        'schoolmanagement/school/test/integration/FirstJourney',
-		'schoolmanagement/school/test/integration/pages/SchoolList',
-		'schoolmanagement/school/test/integration/pages/SchoolObjectPage'
+        'student/test/integration/FirstJourney',
+		'student/test/integration/pages/SchoolList',
+		'student/test/integration/pages/SchoolObjectPage'
     ],
     function(JourneyRunner, opaJourney, SchoolList, SchoolObjectPage) {
         'use strict';
         var JourneyRunner = new JourneyRunner({
             // start index.html in web folder
-            launchUrl: sap.ui.require.toUrl('schoolmanagement/school') + '/index.html'
+            launchUrl: sap.ui.require.toUrl('student') + '/index.html'
         });
 
        

@@ -1,5 +1,5 @@
 namespace com.satinfotech.school;
-using { managed } from '@sap/cds/common';
+using { managed,cuid } from '@sap/cds/common';
 
 entity School : managed {
     key ID : UUID;
@@ -14,3 +14,12 @@ entity School : managed {
     @title: 'no of teachers'
     no_of_teachers: Integer;
 }
+entity Student : cuid {
+                key ID    : UUID;
+
+                    @title: 'student ID'
+                    pid   : Association to one School;
+
+                    name          : String(100);
+                    
+              }

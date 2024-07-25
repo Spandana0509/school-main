@@ -10,6 +10,7 @@
     "@sap/cds": "^7",
     "@sap/cds-dk": "^7.9.2",
     "@sap/xssec": "^3",
+    "dotenv": "^16.4.5",
     "express": "^4",
     "multer": "^1.4.5-lts.1",
     "passport": "^0",

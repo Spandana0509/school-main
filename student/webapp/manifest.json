@@ -1,7 +1,7 @@
 {
   "_version": "1.59.0",
   "sap.app": {
-    "id": "schoolmanagement.school",
+    "id": "student",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -12,16 +12,26 @@
     "resources": "resources.json",
     "sourceTemplate": {
       "id": "@sap/generator-fiori:lrop",
-      "version": "1.12.4",
-      "toolsId": "e2c9c8ca-1b75-4e02-bdf0-f93d506e5012"
+      "version": "1.14.2",
+      "toolsId": "da23156a-5f11-4fff-81a1-a47754365998"
     },
     "dataSources": {
       "mainService": {
         "uri": "/odata/v4/school/",
         "type": "OData",
         "settings": {
-          "annotations": [],
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/metadata.xml",
           "odataVersion": "4.0"
+        }
+      },
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
         }
       }
     }
@@ -45,7 +55,7 @@
   "sap.ui5": {
     "flexEnabled": true,
     "dependencies": {
-      "minUI5Version": "1.124.0",
+      "minUI5Version": "1.126.1",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
@@ -61,14 +71,13 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "schoolmanagement.school.i18n.i18n"
+          "bundleName": "student.i18n.i18n"
         }
       },
       "": {
         "dataSource": "mainService",
         "preload": true,
         "settings": {
-          "synchronizationMode": "None",
           "operationMode": "Server",
           "autoExpandSelect": true,
           "earlyRequests": true
@@ -114,14 +123,8 @@
               },
               "controlConfiguration": {
                 "@com.sap.vocabularies.UI.v1.LineItem": {
-                  "actions": {
-                    "school": {
-                      "press": "schoolmanagement.school.ext.school.school.import",
-                      "visible": true,
-                      "enabled": true,
-                      "requiresSelection": false,
-                      "text": "import data from excel list"
-                    }
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
                   }
                 }
               }
@@ -136,20 +139,7 @@
             "settings": {
               "editableHeaderContent": false,
               "contextPath": "/School",
-              "content": {
-                "header": {
-                  "actions": {
-                    
-                    "actionbuttonObject": {
-                      "press": "school.ext.actionbuttonObject.actionbuttonObject.importdata",
-                      "visible": true,
-                      "enabled": true,
-                      "requiresSelection": false,
-                      "text": "import data from excel object"
-                    }
-                  }
-                }
-              }
+              "entitySet":"School"
             }
           }
         }
