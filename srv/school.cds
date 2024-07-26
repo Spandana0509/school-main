@@ -2,7 +2,7 @@ using { com.satinfotech.school as db } from '../db/schema';
 
 service school {
     entity School as projection on db.School;
-    entity student as projection on db.Student;
+    entity Student as projection on db.Student;
 }
 
 annotate school.School with @odata.draft.enabled;
@@ -10,51 +10,47 @@ annotate school.School with @odata.draft.enabled;
 annotate school.School with @(
     UI.LineItem: [
         {
-            $Type: 'UI.DataField',
-            Label: 'School_name',
+            Label: 'School Name',
             Value: school_name
         },
         {
-            $Type: 'UI.DataField',
+            Label: 'School ID',
             Value: school_ID
         },
         {
-            $Type: 'UI.DataField',
+            Label: 'Address',
             Value: address
         },
         {
-            $Type: 'UI.DataField',
-            Value: no_of_teachers
+            Label: 'Number of Classes',
+            Value: no_of_classes
         },
         {
-            $Type: 'UI.DataField',
-            Value: no_of_classes
+            Label: 'Number of Teachers',
+            Value: no_of_teachers
         }
-    ]
-);
-
-annotate school.School with @(
-    UI.FieldGroup #ProductInformation: {
+    ],
+    UI.FieldGroup #Product: {
         $Type: 'UI.FieldGroupType',
         Data: [
             {
-                $Type: 'UI.DataField',
+                Label: 'School Name',
                 Value: school_name
             },
             {
-                $Type: 'UI.DataField',
+                Label: 'School ID',
                 Value: school_ID
             },
             {
-                $Type: 'UI.DataField',
+                Label: 'Address',
                 Value: address
             },
             {
-                $Type: 'UI.DataField',
+                Label: 'Number of Classes',
                 Value: no_of_classes
             },
             {
-                $Type: 'UI.DataField',
+                Label: 'Number of Teachers',
                 Value: no_of_teachers
             }
         ]
@@ -62,57 +58,49 @@ annotate school.School with @(
     UI.Facets: [
         {
             $Type: 'UI.ReferenceFacet',
-            ID: 'ProductInfoFacet',
-            Label: 'Product Information',
-            Target: '@UI.FieldGroup#ProductInformation'
+            ID: 'CourseFacet',
+            Label: 'School Facets',
+            Target: '@UI.FieldGroup#Product'
         },
         {
             $Type: 'UI.ReferenceFacet',
-            ID: 'relatedCustomerFacet',
-            Label: 'Related Customer',
-            Target: '@UI.LineItem'
+            ID: 'RelatedStudentsFacet',
+            Label: 'Related Students',
+            Target: 'Student/@UI.LineItem'
         }
     ]
 );
 
-annotate school.student with @(
+annotate school.Student with @(
     UI.LineItem: [
         {
-            Label: 'school ID',
-            Value: 'School_ID'
+            Label: 'School ID',
+            Value: school_ID
         },
         {
-            Label: 'student Name',
+            Label: 'Name',
             Value: name
-        },
-        {
-            Label: 'student ID',
-            Value: ID
         }
     ],
-    UI.FieldGroup #student: {
+    UI.FieldGroup #Student: {
         $Type: 'UI.FieldGroupType',
         Data: [
             {
-                Label: 'school ID',
-                Value: 'School_ID'
+                Label: 'School ID',
+                Value: school_ID
             },
             {
-                Label: 'student Name',
+                Label: 'Name',
                 Value: name
-            },
-            {
-                Label: 'student ID',
-                Value: ID
             }
         ]
     },
     UI.Facets: [
         {
             $Type: 'UI.ReferenceFacet',
-            ID: 'ItemsFacet',
-            Label: 'Items',
-            Target: '@UI.FieldGroup#student'
+            ID: 'StudentFacet',
+            Label: 'Student Information',
+            Target: '@UI.FieldGroup#Student'
         }
     ]
 );

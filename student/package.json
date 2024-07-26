@@ -9,7 +9,9 @@
     "sapui5"
   ],
   "main": "webapp/index.html",
-  "dependencies": {},
+  "dependencies": {
+    "ui5-cc-spreadsheetimporter": "1.1.1"
+  },
   "devDependencies": {
     "@ui5/cli": "^3.0.0",
     "@sap/ux-ui5-tooling": "1",
@@ -28,5 +30,10 @@
     "start-variants-management": "fiori run --open \"preview.html?sap-ui-xx-viewCache=false&fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#preview-app\""
   },
   "sapux": true,
-  "sapuxLayer": "CUSTOMER_BASE"
+  "sapuxLayer": "CUSTOMER_BASE",
+  "ui5": {
+    "dependencies": [
+      "ui5-cc-spreadsheetimporter"
+    ]
+  }
 }

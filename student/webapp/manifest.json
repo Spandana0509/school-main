@@ -139,10 +139,31 @@
             "settings": {
               "editableHeaderContent": false,
               "contextPath": "/School",
-              "entitySet":"School"
+              "entitySet": "School",
+              "content": {
+                "header": {
+                  "actions": {
+                    "spreadsheetUpload": {
+                      "id": "spreadsheetUploadButton",
+                      "text": "upload",
+                      "enabled": "{ui>/isEditable}",
+                      "press": "student.ext.ObjectPageExtController.openSpreadsheetUploadDialog",
+                      "requiresSelection": false
+                    }
+                  }
+                }
+              }
             }
           }
         }
+      }
+    },
+    "resourceRoots": {
+      "cc.spreadsheetimporter.v1_1_1": "./thirdparty/customcontrol/spreadsheetimporter/v1_1_1"
+    },
+    "componentUsages": {
+      "spreadsheetImporter": {
+        "name": "cc.spreadsheetimporter.v1_1_1"
       }
     }
   },
