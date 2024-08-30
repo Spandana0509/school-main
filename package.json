@@ -22,13 +22,14 @@
   "devDependencies": {
     "@cap-js/sqlite": "^1",
     "@sap/cds-dk": "^7",
-    "@sap/ux-specification": "^1.120.14"
+    "@sap/ux-specification": "^1.120.17"
   },
   "scripts": {
     "start": "cds-serve",
     "watch-school": "cds watch --open school/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-project1": "cds watch --open project1/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-objectpage": "cds watch --open objectpage/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-objectpage": "cds watch --open objectpage/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-student": "cds watch --open student/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "fiori": {
@@ -48,6 +49,10 @@
     "app/school",
     "app/project1",
     "app/project1",
-    "app/objectpage"
+    "app/objectpage",
+    "app/school",
+    "app/student",
+    "app/student",
+    "app/student"
   ]
 }

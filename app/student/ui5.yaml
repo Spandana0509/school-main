@@ -14,25 +14,10 @@ server:
           path:
             - /resources
             - /test-resources
-          url: https://ui5.sap.com
-        backend:
-          - path: /odata
-            url: http://localhost:4004
+          url: https://sapui5.hana.ondemand.com
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
         port: 35729
         path: webapp
         delay: 300
-    - name: sap-fe-mockserver
-      beforeMiddleware: csp
-      configuration:
-        mountPath: /
-        services:
-          - urlPath: /odata/v4/school
-            metadataPath: ./webapp/localService/metadata.xml
-            mockdataPath: ./webapp/localService/data
-            generateMockData: true
-        annotations:
-          - localPath: ./webapp/annotations/annotation.xml
-            urlPath: annotations/annotation.xml

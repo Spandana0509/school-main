@@ -12,26 +12,16 @@
     "resources": "resources.json",
     "sourceTemplate": {
       "id": "@sap/generator-fiori:lrop",
-      "version": "1.14.2",
-      "toolsId": "da23156a-5f11-4fff-81a1-a47754365998"
+      "version": "1.14.4",
+      "toolsId": "246e7632-ea71-45b4-874a-d9c9a122d18d"
     },
     "dataSources": {
       "mainService": {
         "uri": "/odata/v4/school/",
         "type": "OData",
         "settings": {
-          "annotations": [
-            "annotation"
-          ],
-          "localUri": "localService/metadata.xml",
+          "annotations": [],
           "odataVersion": "4.0"
-        }
-      },
-      "annotation": {
-        "type": "ODataAnnotation",
-        "uri": "annotations/annotation.xml",
-        "settings": {
-          "localUri": "annotations/annotation.xml"
         }
       }
     }
@@ -55,7 +45,7 @@
   "sap.ui5": {
     "flexEnabled": true,
     "dependencies": {
-      "minUI5Version": "1.126.1",
+      "minUI5Version": "1.127.1",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
@@ -103,6 +93,11 @@
           "pattern": "School({key}):?query:",
           "name": "SchoolObjectPage",
           "target": "SchoolObjectPage"
+        },
+        {
+          "pattern": "School({key})/Student({key2}):?query:",
+          "name": "StudentObjectPage",
+          "target": "StudentObjectPage"
         }
       ],
       "targets": {
@@ -125,6 +120,15 @@
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
                     "type": "ResponsiveTable"
+                  },
+                  "actions": {
+                    "student": {
+                      "press": "student.ext.student.student.student",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "upload"
+                    }
                   }
                 }
               }
@@ -139,31 +143,27 @@
             "settings": {
               "editableHeaderContent": false,
               "contextPath": "/School",
-              "entitySet": "School",
-              "content": {
-                "header": {
-                  "actions": {
-                    "spreadsheetUpload": {
-                      "id": "spreadsheetUploadButton",
-                      "text": "upload",
-                      "enabled": "{ui>/isEditable}",
-                      "press": "student.ext.ObjectPageExtController.openSpreadsheetUploadDialog",
-                      "requiresSelection": false
-                    }
+              "navigation": {
+                "Student": {
+                  "detail": {
+                    "route": "StudentObjectPage"
                   }
                 }
               }
             }
           }
+        },
+        "StudentObjectPage": {
+          "type": "Component",
+          "id": "StudentObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/School/Student"
+            }
+          }
         }
-      }
-    },
-    "resourceRoots": {
-      "cc.spreadsheetimporter.v1_1_1": "./thirdparty/customcontrol/spreadsheetimporter/v1_1_1"
-    },
-    "componentUsages": {
-      "spreadsheetImporter": {
-        "name": "cc.spreadsheetimporter.v1_1_1"
       }
     }
   },
