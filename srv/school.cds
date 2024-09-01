@@ -3,6 +3,7 @@ using { com.satinfotech.school as db } from '../db/schema';
 service school {
     entity School as projection on db.School;
     entity Student as projection on db.Student;
+    action ExcelUpload(mimeType: String, fileName: String, fileContent: String, fileExtension: String) returns Boolean;
 }
 
 annotate school.School with @odata.draft.enabled;
